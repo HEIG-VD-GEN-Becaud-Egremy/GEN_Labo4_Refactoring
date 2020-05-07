@@ -36,7 +36,7 @@ public class OrdersWriterTest {
 
     @Test
     public void OneOrderWithOneProduct() {
-        order111.AddProduct(new Product("Shirt", Color.BLUE, Size.M, 2.99, "TWD"));
+        order111.AddProduct(new Product("Shirt", Color.BLUE, Size.M, 2.99, Currency.TWD));
 
         String order111Json = JsonOrder111WithProduct("{\"code\": \"Shirt\", \"color\": \"blue\", \"size\": \"M\", \"price\": 2.99, \"currency\": \"TWD\"}");
         Assertions.assertEquals("{\"orders\": [" + order111Json + "]}", new OrdersWriter(orders).getContents());
@@ -44,7 +44,7 @@ public class OrdersWriterTest {
 
     @Test
     public void OneOrderWithOneProductNoSize() {
-        order111.AddProduct(new Product("Pot", Color.RED, Size.NONE, 16.50, "SGD"));
+        order111.AddProduct(new Product("Pot", Color.RED, Size.NONE, 16.50, Currency.SGD));
 
         String order111Json = JsonOrder111WithProduct("{\"code\": \"Pot\", \"color\": \"red\", \"price\": 16.5, \"currency\": \"SGD\"}");
         Assertions.assertEquals("{\"orders\": [" + order111Json + "]}", new OrdersWriter(orders).getContents());

@@ -42,12 +42,12 @@ public class OrdersWriter {
         sb.append(product.getCode());
         sb.append("\", ");
         sb.append("\"color\": \"");
-        sb.append(product.getColorFor());
+        sb.append(product.getColor());
         sb.append("\", ");
 
         if (product.getSize() != Size.NONE) {
             sb.append("\"size\": \"");
-            sb.append(product.getSizeFor());
+            sb.append(product.getSize());
             sb.append("\", ");
         }
 
