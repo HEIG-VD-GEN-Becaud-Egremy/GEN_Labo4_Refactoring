@@ -1,5 +1,8 @@
 package ch.heigvd.gen2019;
 
+
+import static ch.heigvd.gen2019.FormattableToJSON.appendField;
+
 public class OrdersWriter {
     private Orders orders;
 
@@ -33,21 +36,6 @@ public class OrdersWriter {
         }
 
         return sb.append("]}").toString();
-    }
-
-    private void appendField(StringBuffer sb, String fieldName, Object object) {
-        sb.append('\"');
-        sb.append(fieldName);
-        sb.append("\": ");
-        sb.append(object);
-    }
-
-    private void appendField(StringBuffer sb, String fieldName, String str) {
-        sb.append('\"');
-        sb.append(fieldName);
-        sb.append("\": \"");
-        sb.append(str);
-        sb.append("\"");
     }
 
     private void getProductContents(StringBuffer sb, Product product) {
