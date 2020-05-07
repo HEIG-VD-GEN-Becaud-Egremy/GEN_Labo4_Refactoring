@@ -35,4 +35,36 @@ public class Product {
     public String getCurrency() {
         return currency;
     }
+
+    public String getSizeFor() {
+        switch (getSize()) {
+            case 1:
+                return "XS";
+            case 2:
+                return "S";
+            case 3:
+                return "M";
+            case 4:
+                return "L";
+            case 5:
+                return "XL";
+            case 6:
+                return "XXL";
+            default:
+                return "Invalid Size";
+        }
+    }
+
+    public String getColorFor() {
+        switch (getColor()) {
+            case 1:
+                return "blue";
+            case 2:
+                return "red";
+            case 3:
+                return "yellow";
+            default:
+                return "no color";
+        }
+    }
 }
