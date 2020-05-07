@@ -1,3 +1,5 @@
+package ch.heigvd.gen2019;
+
 public class Product {
     public static final int SIZE_NOT_APPLICABLE = -1;
     private String code;

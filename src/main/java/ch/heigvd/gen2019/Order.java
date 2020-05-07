@@ -1,3 +1,5 @@
+package ch.heigvd.gen2019;
+
 import java.util.ArrayList;
 import java.util.List;
 
