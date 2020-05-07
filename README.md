@@ -1,1 +1,3 @@
-# GEN_Labo4_Refactoring
+# HEIG GEN - Labo4 - Refactoring
+## Auteurs
+Arthur Bécaud et Bruno Egremy
