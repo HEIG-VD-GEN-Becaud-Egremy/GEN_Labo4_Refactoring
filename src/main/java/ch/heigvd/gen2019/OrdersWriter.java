@@ -20,7 +20,7 @@ public class OrdersWriter {
             sb.append(", ");
             sb.append("\"products\": [");
             for (int j = 0; j < order.getProductsCount(); j++) {
-                getProductContents(sb, order.getProduct(j));
+                order.getProduct(j).toJSON(sb);
             }
 
             if (order.getProductsCount() > 0) {
@@ -36,24 +36,6 @@ public class OrdersWriter {
         }
 
         return sb.append("]}").toString();
-    }
-
-    private void getProductContents(StringBuffer sb, Product product) {
-        sb.append("{");
-        appendField(sb, "code", product.getCode());
-        sb.append(", ");
-        appendField(sb, "color", product.getColor().toString());
-        sb.append(", ");
-
-        if (product.getSize() != Size.NONE) {
-            appendField(sb, "size", product.getSize().toString());
-            sb.append(", ");
-        }
-
-        appendField(sb, "price", product.getPrice());
-        sb.append(", ");
-        appendField(sb, "currency", product.getCurrency().toString());
-        sb.append("}, ");
     }
 
 }

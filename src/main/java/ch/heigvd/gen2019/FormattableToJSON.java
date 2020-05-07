@@ -17,5 +17,5 @@ public interface FormattableToJSON {
         sb.append("\"");
     }
     
-    abstract void toJSON(StringBuffer sb);
+    void toJSON(StringBuffer sb);
 }
