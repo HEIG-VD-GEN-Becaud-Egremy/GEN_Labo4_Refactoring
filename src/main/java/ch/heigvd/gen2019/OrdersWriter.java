@@ -13,8 +13,7 @@ public class OrdersWriter {
         for (int i = 0; i < orders.getOrdersCount(); i++) {
             Order order = orders.getOrder(i);
             sb.append("{");
-            sb.append("\"id\": ");
-            sb.append(order.getOrderId());
+            appendField(sb, "id", order.getOrderId());
             sb.append(", ");
             sb.append("\"products\": [");
             for (int j = 0; j < order.getProductsCount(); j++) {
@@ -36,27 +35,37 @@ public class OrdersWriter {
         return sb.append("]}").toString();
     }
 
+    private void appendField(StringBuffer sb, String fieldName, Object object) {
+        sb.append('\"');
+        sb.append(fieldName);
+        sb.append("\": ");
+        sb.append(object);
+    }
+
+    private void appendField(StringBuffer sb, String fieldName, String str) {
+        sb.append('\"');
+        sb.append(fieldName);
+        sb.append("\": \"");
+        sb.append(str);
+        sb.append("\"");
+    }
+
     private void getProductContents(StringBuffer sb, Product product) {
         sb.append("{");
-        sb.append("\"code\": \"");
-        sb.append(product.getCode());
-        sb.append("\", ");
-        sb.append("\"color\": \"");
-        sb.append(product.getColor());
-        sb.append("\", ");
+        appendField(sb, "code", product.getCode());
+        sb.append(", ");
+        appendField(sb, "color", product.getColor().toString());
+        sb.append(", ");
 
         if (product.getSize() != Size.NONE) {
-            sb.append("\"size\": \"");
-            sb.append(product.getSize());
-            sb.append("\", ");
+            appendField(sb, "size", product.getSize().toString());
+            sb.append(", ");
         }
 
-        sb.append("\"price\": ");
-        sb.append(product.getPrice());
+        appendField(sb, "price", product.getPrice());
         sb.append(", ");
-        sb.append("\"currency\": \"");
-        sb.append(product.getCurrency());
-        sb.append("\"}, ");
+        appendField(sb, "currency", product.getCurrency().toString());
+        sb.append("}, ");
     }
 
 }
