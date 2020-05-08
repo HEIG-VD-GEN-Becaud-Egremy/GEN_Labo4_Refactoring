@@ -1,26 +1,19 @@
 package ch.heigvd.gen2019;
 
-
-import static ch.heigvd.gen2019.FormattableToJSON.appendField;
+import java.util.List;
 
 public class OrdersWriter {
-    private Orders orders;
+    private List<Order> orders;
 
-    public OrdersWriter(Orders orders) {
+    public OrdersWriter(List<Order> orders) {
         this.orders = orders;
     }
 
     public String getContents() {
-        StringBuffer sb = new StringBuffer("{\"orders\": [");
+        StringBuffer sb = new StringBuffer();
 
-        for (int i = 0; i < orders.getOrdersCount(); i++) {
-            orders.getOrder(i).toJSON(sb);
-        }
+        FormattableToJSON.appendListOfFormattableToJSON(sb, orders);
 
-        if (orders.getOrdersCount() > 0) {
-            sb.delete(sb.length() - 2, sb.length());
-        }
-
-        return sb.append("]}").toString();
+        return sb.toString();
     }
 }
